@@ -3,6 +3,9 @@ base:
         - basic
         - basic.scm
 
+    'pokecenter':
+        - release.debian.testing
+
     'scyther':
         - release.debian.testing
         - webserver

@@ -4,9 +4,11 @@ basic-packages:
         - names:
             - ntp
             - sudo
+
             - ssh
             - openssh-client
             - openssh-server
+
             - curl
             - cronolog
             - netcat
