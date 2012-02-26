@@ -1,0 +1,4 @@
+deb http://apt:9999/debian testing main non-free contrib
+deb-src http://apt:9999/debian testing main non-free contrib
+
+deb http://apt:9999/security testing main non-free contrib

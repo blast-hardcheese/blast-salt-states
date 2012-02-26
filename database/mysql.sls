@@ -1,0 +1,3 @@
+mysql-server:
+    pkg:
+        - installed
