@@ -1,0 +1,17 @@
+nslcd slcd/ldap-binddn cn=admin,dc=hardchee,dc=se
+nslcd slcd/ldap-bindpw password
+# nslcd slcd/ldap-reqcert
+# nslcd slcd/ldap-sasl-authcid
+# nslcd slcd/ldap-sasl-authzid
+# nslcd slcd/ldap-sasl-krb5-ccname /var/run/nslcd/nslcd.tkt
+# nslcd slcd/ldap-sasl-mech
+# nslcd slcd/ldap-sasl-realm
+# nslcd slcd/ldap-sasl-secprops
+# nslcd slcd/ldap-starttls false
+nslcd slcd/ldap-auth-type none
+nslcd slcd/ldap-base dc=hardchee,dc=se
+nslcd slcd/ldap-uris ldap://ldap/
+libpam-runtime  libpam-runtime/profiles multiselect unix, ldap
+libnss-ldapd libnss-ldapd/nsswitch multiselect ethers, group, hosts, passwd, protocols, rpc, services, shadow
+libpam-ldapd libpam-ldapd/enable_shadow boolean true
+libnss-ldapd libnss-ldapd/clean_nsswitch boolean true
