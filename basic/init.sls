@@ -8,6 +8,8 @@ basic-packages:
             - ssh
             - openssh-client
             - openssh-server
+            - avahi-daemon
+            - avahi-utils
 
             - curl
             - cronolog
