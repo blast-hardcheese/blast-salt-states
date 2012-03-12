@@ -4,6 +4,7 @@ base:
         - basic.scm
         - ldap-client
         - ldap-client.nfs-homes
+        - networking
 
     'pokecenter':
         - release.debian.testing
