@@ -7,6 +7,9 @@ base:
         - networking
         - salt.minion
 
+    'salt01':
+        - release.debian.testing
+
     'pokecenter':
         - release.debian.testing
         - salt.master
