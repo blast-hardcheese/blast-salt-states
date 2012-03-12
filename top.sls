@@ -2,6 +2,8 @@ base:
     '*':
         - basic
         - basic.scm
+        - ldap-client
+        - ldap-client.nfs-homes
 
     'pokecenter':
         - release.debian.testing
