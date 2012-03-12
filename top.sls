@@ -5,6 +5,7 @@ base:
         - ldap-client
         - ldap-client.nfs-homes
         - networking
+        - salt.minion
 
     'pokecenter':
         - release.debian.testing

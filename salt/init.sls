@@ -1,0 +1,3 @@
+supervisor:
+    pkg:
+        - installed
