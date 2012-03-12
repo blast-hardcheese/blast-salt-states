@@ -9,6 +9,7 @@ base:
 
     'pokecenter':
         - release.debian.testing
+        - salt.master
 
     'scyther':
         - release.debian.testing
