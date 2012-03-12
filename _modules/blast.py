@@ -34,6 +34,5 @@ def restart_salt():
     'pkill salt-master',
     'pkill salt-minion',
     'pkill salt',
-    ))
-    + '" &')
+    )))
     return True
