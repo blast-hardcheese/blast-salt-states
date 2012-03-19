@@ -10,6 +10,14 @@ base:
     'salt01':
         - release.debian.testing
 
+    'sensu01':
+        - release.debian.testing
+        - development.ruby
+
+    'sensu02':
+        - release.debian.stable-bpo
+        - development.ruby
+
     'pokecenter':
         - release.debian.testing
         - salt.master
