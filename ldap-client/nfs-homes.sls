@@ -1,10 +1,9 @@
-nfs-common:
+nfs-homes-packages:
     pkg:
         - installed
-
-autofs:
-    pkg:
-        - installed
+        - names:
+            - nfs-common
+            - autofs
 
 /etc/auto.home:
     file:
@@ -19,3 +18,17 @@ autofs:
         - source: salt://ldap-client/etc/auto.master
         - require:
             - pkg: autofs
+
+nfs-homes-services:
+    service:
+        - names:
+            - automount
+            - nfs-common
+        - running
+        - require:
+            - file: /etc/auto.home
+            - file: /etc/auto.master
+            - pkg: autofs
+        - watch:
+            - file: /etc/auto.home
+            - file: /etc/auto.master
