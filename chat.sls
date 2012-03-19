@@ -4,4 +4,5 @@ chat-packages:
         - names:
             - irssi
             - finch
-
+            - irssi-scripts
+            - znc
