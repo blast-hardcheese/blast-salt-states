@@ -1,3 +1,15 @@
+worker_threads: 1
+
+cachedir: /var/cache/salt-master
+
+file_roots:
+  base:
+    - /srv/salt/files
+
+pillar_roots:
+  base:
+    - /srv/salt/pillar
+
 # DO NOT MODIFY THIS FILE.  Copy it to: /etc/salt/master
 ##### Primary configuration settings #####
 ##########################################
@@ -14,7 +26,6 @@
 # return calls made from minions to the master, if the master seems to be
 # running slowly, increase the number of threads
 #worker_threads: 5
-worker_threads: 1
 
 # The port used by the communication interface
 #ret_port: 4506
@@ -27,7 +38,7 @@ worker_threads: 1
 #pki_dir: /etc/salt/pki
 
 # Directory to store job and cache data
-cachedir: /var/cache/salt-master
+#cachedir: /var/cache/salt
 
 # Set the number of hours to keep old job information
 #keep_jobs: 24
@@ -102,9 +113,9 @@ cachedir: /var/cache/salt-master
 #     - /srv/salt/prod/states
 #
 # Default:
-file_roots:
-  base:
-    - /srv/salt/files
+#file_roots:
+#  base:
+#    - /srv/salt
 
 # The hash_type is the hash to use when discovering the hash of a file on
 # the master server, the default is md5, but sha1, sha224, sha256, sha384
@@ -113,6 +124,19 @@ file_roots:
 
 # The buffer size in the file server can be adjusted here:
 #file_buffer_size: 1048576
+
+# Pillar Configurations:
+# The Salt Pillar, is a system that allows for the building of global data
+# that is refined based on minion. Basically, the pillar creates data that
+# can be generated to be specific based on the grains of the minion. Pillar
+# is laid out in the same fashion as the file server, with environments, a top
+# file and sls files. The difference is that the data does not need to be
+# in the highstate format, and is generally just key/value pairs.
+#
+#pillar_roots:
+#  base:
+#    - /srv/pillar
+#
 
 #####          Syndic settings       #####
 ##########################################
@@ -128,7 +152,7 @@ file_roots:
 #order_masters: False
 #
 # If this master will be running a salt syndic daemon, syndic_master tells
-# this master where to recieve commands from.
+# this master where to receive commands from.
 #syndic_master: masterofmaster
 
 #####      Peer Publish settings     #####
@@ -203,3 +227,8 @@ file_roots:
 #   group1: 'L@foo.domain.com,bar.domain.com,baz.domain.com and bl*.domain.com',
 #   group2: 'G@os:Debian and foo.domain.com',
 
+#####     Range Cluster settings     #####
+##########################################
+# The range server (and optional port) that
+# serves your cluster information
+#range_server: range:80
