@@ -1,6 +1,7 @@
 {% import "sensu/common.jinja" as common %}
 
 {%- for part in common.sensu_parts %}
+
     {%- if pillar[part] %}
 
 {{ common.init_script_path(part) }}:
@@ -10,11 +11,7 @@
         - template: jinja
         - mode: 755
         - defaults:
-            daemon_path: {{ salt['cmd.run'](
-                "gem contents sensu"
-                + (" sensu-dashboard" if part == "sensu-dashboard" else "")
-                + " | grep bin/" + part
-            ) }}
+            daemon_path: "{{ salt['cmd.run'](cmd) }}"
             part: "{{ part }}"
 
         - require:

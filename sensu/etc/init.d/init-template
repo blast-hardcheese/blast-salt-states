@@ -1,5 +1,9 @@
 #!/bin/sh
 
+{% set daemon_path = salt['cmd.run']("gem contents sensu"
+                                    + (" sensu-dashboard" if part == "sensu-dashboard" else "")
+                                    + " | grep bin/" + part ) %}
+
 DAEMON={{ daemon_path }}
 NAME=sensu-{{ part }}
 DESC="sensu {{ part }}"
@@ -112,7 +116,7 @@ case "$1" in
     if running ;  then
         echo "running"
     else
-        echo " not running."
+        echo "not running."
         exit 1
     fi
     ;;
