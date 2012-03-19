@@ -18,3 +18,13 @@ include:
         - group: root
         - require:
             - pkg: supervisor
+
+salt-processes-minion:
+    service:
+        - names:
+            - supervisor
+        - running
+        - require:
+            - pkg: supervisor
+        - watch:
+            - file: /etc/supervisor/conf.d/salt-minion.conf
