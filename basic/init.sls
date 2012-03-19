@@ -11,12 +11,18 @@ basic-packages:
             - avahi-daemon
             - avahi-utils
 
+            - bc
+            - screen
+
             - curl
             - cronolog
             - netcat
             - dnsutils
             - debian-goodies
             - moreutils
+
+            - mg
+            - vim
 
 /etc/sudoers.d/local:
     file:
