@@ -17,6 +17,7 @@ base:
     'sensu02':
         - release.debian.stable-bpo
         - development.ruby
+        - sensu.gem
 
     'pokecenter':
         - release.debian.testing
