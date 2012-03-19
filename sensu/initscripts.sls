@@ -1,10 +1,9 @@
-{% set init_prefix = "/etc/init.d" %}
-{% set sensu_parts = ["server", "dashboard", "api", "client"] %}
+{% import "sensu/common.jinja" as common %}
 
-{%- for part in sensu_parts %}
-    {%- if pillar['sensu-' + part ] %}
+{%- for part in common.sensu_parts %}
+    {%- if pillar[part] %}
 
-{{ init_prefix}}/sensu-{{ part }}:
+{{ common.init_script_path(part) }}:
     file:
         - managed
         - source: salt://sensu/etc/init.d/init-template
@@ -13,15 +12,14 @@
         - defaults:
             daemon_path: {{ salt['cmd.run'](
                 "gem contents sensu"
-                + (" sensu-dashboard" if part == "dashboard" else "")
-                + " | grep bin/sensu-"
-                + part
+                + (" sensu-dashboard" if part == "sensu-dashboard" else "")
+                + " | grep bin/" + part
             ) }}
             part: "{{ part }}"
 
         - require:
             - gem: sensu
-        {%- if part == "dashboard" %}
+        {%- if part == "sensu-dashboard" %}
             - gem: sensu-dashboard
         {%- endif %}
 

@@ -10,6 +10,8 @@ LOGFILE=/var/log/sensu/$NAME.log
 PIDFILE=/var/run/$NAME.pid
 DODTIME=4
 
+DAEMON_OPTS="-b -p $PIDFILE -l $LOGFILE"
+
 set -e
 
 running_pid()
@@ -64,7 +66,7 @@ case "$1" in
         else
             start-stop-daemon --start --quiet --pidfile $PIDFILE \
                     --startas $DAEMON -- $DAEMON_OPTS
-            test -f $PIDFILE || sleep 1
+            sleep 1
             if running ; then
                 echo "$NAME."
             else
@@ -74,7 +76,7 @@ case "$1" in
 	;;
   stop)
 	echo -n "Stopping $DESC: "
-	start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE 
+	start-stop-daemon --stop --retry $DODTIME --quiet --oknodo --pidfile $PIDFILE 
 	echo "$NAME."
 	;;
   force-stop)
@@ -95,9 +97,8 @@ case "$1" in
 	# check wether $DAEMON is running. If so, restart
         start-stop-daemon --stop --test --quiet --pidfile $PIDFILE \
                 --startas $DAEMON \
-	&& $0 restart \
-	|| exit 0
-	;;
+	&& $0 start || exit 0
+        ;;
   restart)
     echo -n "Restarting $DESC: "
         start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE 

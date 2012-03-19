@@ -1,6 +1,6 @@
 {
    "rabbitmq": {
-     "host": "<rabbitmq-host>",
+     "host": "localhost",
      "user": "sensu",
      "password": "sensupasswd",
      "vhost": "/sensu"

@@ -1,12 +1,12 @@
-{% include "sensu/common.jinja" %}
+{% import "sensu/common.jinja" as common %}
 
-{%- for part in sensu_parts %}
-    {%- if pillar["sensu-" + part] %}
-sensu-{{ part }}:
+{%- for part in common.sensu_parts %}
+    {%- if pillar[part] %}
+{{ part }}:
     service:
         - running
         - require:
-            - file: {{ init_prefix }}/sensu-{{ part }}
+            - file: {{ common.init_script_path( part ) }}
         - watch:
             - file: /etc/sensu/config.json
     {%- endif %}

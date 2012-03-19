@@ -1,5 +1,3 @@
-{% include "sensu/common.jinja" %}
-
 include:
     - sensu.initscripts
     - sensu.services
@@ -15,12 +13,11 @@ sensu-packages:
             - rabbitmq-server
             - redis-server
 
-sensu:
+sensu-gems:
     gem:
         - installed
-
-{% if pillar['sensu-dashboard'] %}
-sensu-dashboard:
-    gem:
-        - installed
-{% endif %}
+        - names:
+            - sensu
+{%- if pillar['sensu-dashboard'] %}
+            - sensu-dashboard
+{%- endif %}
