@@ -7,6 +7,7 @@ There's still plenty of (dated) information in here, but if you're interested in
 Salt states for home server administration
 
 Interesting states:
+
     ldap-client
     ldap-client.nfs-homes
     # LDAP user/groups, NFSv4 home directories
@@ -29,6 +30,7 @@ Interesting states:
     # work.
 
 Interesting modules:
+
     blast.py
     # Testing and salt management module. Basically:
     ## mkdir /srv/salt/
@@ -39,5 +41,6 @@ Interesting modules:
     # and states
 
 Other interesting things:
+
     utils/initial-install-salt.sh
     # Get salt installed, configured, and ready for use.
