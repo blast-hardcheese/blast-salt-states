@@ -1,10 +1,11 @@
-As you might have noticed, this repo hasn't been updated in two years
+As you might have noticed...
 =====================================================================
 
-There's still plenty of (dated) information in here, but if you're interested in seeing what I've been working on recently, please check out blast-hardcheese/salty-baseline.
+... this repo hasn't been updated in two years. There's still plenty of (dated) information in here, but if you're interested in seeing what I've been working on recently, please check out blast-hardcheese/salty-baseline.
 
 
 Salt states for home server administration
+------------------------------------------
 
 Interesting states:
 
